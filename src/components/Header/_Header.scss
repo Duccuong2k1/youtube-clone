@@ -1,0 +1,79 @@
+@import '../../sass/base';
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    border-color: $black-primary;
+    height: 10vh;
+    width: 100%;
+    &__menu {
+        display: none;
+        cursor: pointer;
+        margin-right: 1rem;
+    }
+    &__menu__logo {
+        color: #ff0000;
+    }
+    &__form-search {
+        width: 50%;
+        // background: #fff;
+        display: flex;
+        justify-content: flex-end;
+        border-radius: 2px;
+        border: 1px solid $text-color;
+        input {
+            width: 100%;
+            height: auto;
+            outline: none;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            background: transparent;
+            color: #fff;
+        }
+        button {
+            border: 0;
+            background-color: transparent;
+            outline: none;
+            width: 80px;
+            border-left: 1px solid $border-color;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    &__icon {
+        display: flex;
+        align-items: center;
+        &>* {
+            margin-left: 1rem;
+        }
+        img {
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+            border-radius: 50%;
+            cursor: pointer;
+            display: block;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-small) {
+    .header {
+        padding: 1rem;
+        form {
+            flex: 1;
+        }
+        &__menu {
+            display: block;
+        }
+        &__menu__logo {
+            display: none;
+        }
+        &__icon>*:not(img) {
+            display: none;
+        }
+    }
+}

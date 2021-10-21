@@ -1,0 +1,25 @@
+@import '../../sass/index.scss';
+.login {
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    &__container {
+        background-color: $black-secondary;
+        padding: 2rem;
+        margin: 0 1rem;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .icon-logo {
+            color: #ff0000;
+        }
+        button {
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 5px 10px;
+            outline: none;
+            border: 0;
+        }
+    }
+}

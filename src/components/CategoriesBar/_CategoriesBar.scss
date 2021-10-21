@@ -1,0 +1,26 @@
+@import '../../sass/base';
+.categories-bar {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    display: flex;
+    overflow-x: scroll !important;
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+    scrollbar-width: none;
+    span {
+        border: 1.5px solid $text-color;
+        border-radius: 999px;
+        margin-right: 1rem;
+        padding: 0.5rem;
+        white-space: nowrap;
+        cursor: pointer;
+        &.active {
+            background-color: $border-color;
+            color: #fff;
+        }
+        &:hover {
+            background-color: $border-color;
+        }
+    }
+}

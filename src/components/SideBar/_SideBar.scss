@@ -1,0 +1,54 @@
+@import '../../sass/base';
+.sidebar {
+    background-color: $black-secondary;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding-top: 2rem;
+    transition: transform 0.3s ease;
+    li {
+        list-style: none;
+        padding: 0.6rem 1.5rem;
+        margin: 0.2rem 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        &>* {
+            margin-right: 1rem;
+        }
+        span {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            text-transform: capitalize;
+        }
+        &:hover {
+            background-color: $border-color;
+        }
+    }
+    &.open {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: $breakpoint-medium) {
+    .sidebar {
+        width: 90px;
+        li {
+            justify-content: center;
+        }
+        span {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-small) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.2s ease;
+        position: fixed;
+        z-index: 999;
+    }
+}
