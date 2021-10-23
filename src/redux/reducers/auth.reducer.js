@@ -1,6 +1,6 @@
 const initialState = {
-    accessToken: null,
-    user: null,
+    accessToken: sessionStorage.getItem('yt-access-token') ? sessionStorage.getItem('yt-access-token') : null,
+    user: sessionStorage.getItem('yt-profile') ? JSON.parse(sessionStorage.getItem('yt-profile')) : null,
     loading: false,
 
 }
@@ -30,6 +30,13 @@ export const authReducer = (prevState = initialState, action) => {
             return {
                 ...prevState,
                 user: payload,
+
+            }
+        case "LOG_OUT":
+            return {
+                ...prevState,
+                accessToken: null,
+                user: null,
 
             }
         default:
