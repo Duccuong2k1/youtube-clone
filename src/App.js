@@ -1,15 +1,16 @@
 import { Container } from 'react-bootstrap';
-
+import { useHistory } from 'react-router-dom';
 import { Header, Sidebar } from './components';
 import Home from './pages/Home/Home';
 import './app.scss';
-import { useState } from 'react';
-import Login from './pages/Login/Login';
+import { useEffect, useState } from 'react';
+
 import { 
-	BrowserRouter as Router,
 	Switch,
-	Route, Redirect, BrowserRouter
+	Route, Redirect
 } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Login from './pages/Login/Login';
 
 function  Layout({children}) {
 	const [sidebar,setToggleSidebar] = useState(false);
@@ -30,30 +31,41 @@ function  Layout({children}) {
 }
 
 function App() {
-	return (
-		<Router >
-			<Switch >
+	const {accessToken,loading} = useSelector(state => state.auth);
+	const history = useHistory();
 
-					<Route path="/" exact>
-						<Layout >
-							<Home />
-						</Layout>
-					</Route>
-					<Route path="/auth">
-					
-							<Login />
-					</Route>
-					<Route path="/search">
-						<Layout >
-							<h3>search</h3>
-						</Layout>
-					</Route>
-					<Route path="/">
-						<Redirect to="/" />
-					</Route>
-				
-			</Switch>
-		</Router>
+
+	useEffect(() => {
+		if(!loading && !accessToken){
+			history.push('/auth');
+
+		}
+	},[accessToken,loading,history]);
+
+
+	return (
+
+		<Switch >
+
+			<Route path="/" exact>
+				<Layout >
+					<Home />
+				</Layout>
+			</Route>
+			<Route path="/auth">
+			
+					<Login />
+			</Route>
+			<Route path="/search">
+				<Layout >
+					<h3>search</h3>
+				</Layout>
+			</Route>
+			<Route path="/">
+				<Redirect to="/" />
+			</Route>
+			
+		</Switch>
 		
 	);
 }

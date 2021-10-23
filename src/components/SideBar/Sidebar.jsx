@@ -6,6 +6,8 @@ import { AiTwotoneLike } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import './_SideBar.scss';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../redux/actions/auth.action';
 
 const NavMenu =[
     {
@@ -42,6 +44,13 @@ const NavMenu =[
 
 
 export const Sidebar = ({sidebar,toggleSidebar}) => {
+    const dispatch = useDispatch();
+
+    const handleClickLogOut = ()=>{
+        dispatch(logout)
+    }
+
+
     return (
         <nav className={sidebar ? `sidebar open` : 'sidebar'}
             onClick={()=> toggleSidebar(false)}
@@ -64,7 +73,7 @@ export const Sidebar = ({sidebar,toggleSidebar}) => {
             
             
             <hr />
-            <li>
+            <li onClick={()=> handleClickLogOut()}>
                 <FiLogOut />
                 <span>log Out</span>
             </li>
