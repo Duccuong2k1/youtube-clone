@@ -8,7 +8,7 @@ import Login from './pages/Login/Login';
 import { 
 	BrowserRouter as Router,
 	Switch,
-	Route, Redirect, BrowserRouter
+	Route, Redirect
 } from 'react-router-dom';
 
 function  Layout({children}) {
